@@ -1,4 +1,4 @@
-package multithreading.ballbounce;
+package multithreading.ballbounceV2;
 
 import javax.swing.*;
 import java.awt.*;
@@ -34,7 +34,14 @@ class BounceFrame extends JFrame {
         addButton(buttonPanel, "START", new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                addBall();
+                Thread t = new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        System.out.println("thread start " + Thread.currentThread().getName());
+                        addBall();
+                    }
+                });
+                t.start();
             }
         });//lambda 表示: e -> addBall()
         addButton(buttonPanel, "CLOSE", new ActionListener() {
@@ -59,7 +66,8 @@ class BounceFrame extends JFrame {
             component.add(ball);
             for (int i = 1; i <= STEPS; i++) {
                 ball.move(component.getBounds());
-                component.paint(component.getGraphics());
+//                component.paint(component.getGraphics());
+                component.repaint();
                 Thread.sleep(DELAY);
             }
         } catch (InterruptedException e) {
