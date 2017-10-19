@@ -1,5 +1,6 @@
 package multithreading.ballbounce;
 
+import java.awt.geom.Ellipse2D;
 import java.awt.geom.Rectangle2D;
 
 /**
@@ -36,5 +37,9 @@ public class Ball {
             y = bounds.getMaxY() - YSIZE;
             dy = -dy;
         }
+    }
+
+    public Ellipse2D getShape() {
+        return new Ellipse2D.Double(x, y, XSIZE, YSIZE);
     }
 }
