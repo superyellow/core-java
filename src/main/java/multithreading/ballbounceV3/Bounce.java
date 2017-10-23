@@ -1,4 +1,7 @@
-package multithreading.ballbounceV2;
+package multithreading.ballbounceV3;
+
+import multithreading.ballbounce.Ball;
+import multithreading.ballbounce.BallComponent;
 
 import javax.swing.*;
 import java.awt.*;
@@ -14,6 +17,7 @@ public class Bounce {
             @Override
             public void run() {
                 JFrame frame = new BounceFrame();
+                frame.setTitle("BounceTitle");
                 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 frame.setVisible(true);
             }
@@ -22,9 +26,7 @@ public class Bounce {
 }
 
 class BounceFrame extends JFrame {
-    private BallComponent component;
-    public static final int STEPS = 2000;
-    public static final int DELAY = 3;
+    private multithreading.ballbounce.BallComponent component;
 
     public BounceFrame() {
         setTitle("Bounce");
@@ -34,14 +36,7 @@ class BounceFrame extends JFrame {
         addButton(buttonPanel, "START", new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Thread t = new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        System.out.println("thread start " + Thread.currentThread().getName());
-                        addBall();
-                    }
-                });
-                t.start();
+                addBall();
             }
         });//lambda 表示: e -> addBall()
         addButton(buttonPanel, "CLOSE", new ActionListener() {
@@ -61,16 +56,32 @@ class BounceFrame extends JFrame {
     }
 
     public void addBall() {
+        Ball ball = new Ball();
+        component.add(ball);
+        Runnable r = new BallRunnable(ball, component);
+        Thread t = new Thread(r);
+        t.start();
+    }
+}
+
+class BallRunnable implements Runnable {
+    private Ball ball;
+    private Component component;
+    public static final int STEPS = 1000;
+    public static final int DELAY = 3;
+
+    public BallRunnable(Ball ball, Component component) {
+        this.ball = ball;
+        this.component = component;
+    }
+
+    @Override
+    public void run() {
         try {
-            Ball ball = new Ball();
-            component.add(ball);
-            for (int i = 1; i <= STEPS; i++) {
+            for (int i = 1; i <=STEPS; i++) {
                 ball.move(component.getBounds());
-//                component.paint(component.getGraphics());
                 component.repaint();
                 Thread.sleep(DELAY);
-                Thread.currentThread().interrupt();
-                System.out.println(Thread.currentThread().isInterrupted());
             }
         } catch (InterruptedException e) {
             e.printStackTrace();
