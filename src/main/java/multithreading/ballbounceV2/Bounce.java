@@ -68,9 +68,14 @@ class BounceFrame extends JFrame {
                 ball.move(component.getBounds());
 //                component.paint(component.getGraphics());
                 component.repaint();
+                //interrupt()方法只会请求中断线程, 将中断状态置为true, 但线程不会中断
+                //但如果interrupt()后接一个sleep方法, 那么sleep()方法会抛出InterruptException异常
+                //Thread的静态方法interrupted()可以检测中断状态, 并清除这个状态
+//                Thread.currentThread().interrupt();
                 Thread.sleep(DELAY);
-                Thread.currentThread().interrupt();
-                System.out.println(Thread.currentThread().isInterrupted());
+//                System.out.println(Thread.currentThread().isInterrupted());
+//                System.out.println(Thread.interrupted());
+//                System.out.println(Thread.currentThread().isInterrupted());
             }
         } catch (InterruptedException e) {
             e.printStackTrace();
