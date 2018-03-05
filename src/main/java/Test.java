@@ -9,5 +9,11 @@ public class Test {
         System.out.println(x);
         x += dx;
         System.out.println(x);
+
+
+        String str = "1234567890111";
+        int n = 4;
+        System.out.println(str.substring(str.length()-n));
+        System.out.println(str.substring(str.length()-n, str.length()));
     }
 }
