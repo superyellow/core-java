@@ -1,7 +1,7 @@
-package multithreading.ballbounceV3;
+package _multithreading.ballbounceV3;
 
-import multithreading.ballbounce.Ball;
-import multithreading.ballbounce.BallComponent;
+import _multithreading.ballbounce.Ball;
+import _multithreading.ballbounce.BallComponent;
 
 import javax.swing.*;
 import java.awt.*;
@@ -26,7 +26,7 @@ public class Bounce {
 }
 
 class BounceFrame extends JFrame {
-    private multithreading.ballbounce.BallComponent component;
+    private _multithreading.ballbounce.BallComponent component;
 
     public BounceFrame() {
         setTitle("Bounce");

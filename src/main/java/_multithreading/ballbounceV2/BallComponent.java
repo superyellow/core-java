@@ -1,4 +1,4 @@
-package multithreading.ballbounceV2;
+package _multithreading.ballbounceV2;
 
 import javax.swing.*;
 import java.awt.*;

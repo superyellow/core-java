@@ -1,4 +1,4 @@
-package multithreading;
+package _multithreading;
 
 /**
  * @author simple_huang@foxmail.com on 2017/10/24.

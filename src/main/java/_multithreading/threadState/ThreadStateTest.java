@@ -1,7 +1,6 @@
-package multithreading.threadState;
+package _multithreading.threadState;
 
 import java.util.Arrays;
-import java.util.stream.Stream;
 
 /**
  * @author simple_huang@foxmail.com on 2017/10/24.
