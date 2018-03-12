@@ -1,4 +1,4 @@
-package multithreading.ballbounceV3;
+package _multithreading.ballbounceV2;
 
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Rectangle2D;

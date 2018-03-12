@@ -1,4 +1,4 @@
-package multithreading.transferMoneyV2;
+package _multithreading.transferMoneyV2;
 
 /**
  * @author simple_huang@foxmail.com on 2017/10/24.

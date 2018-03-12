@@ -1,4 +1,4 @@
-package collection.algorithms;
+package _collections.algorithms;
 
 import java.util.*;
 
