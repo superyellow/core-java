@@ -7,14 +7,10 @@ public class MyCircularArrayQueue<E> implements MyQueue<E> {
     private E[] elements;
     private int head;
     private int tail;
-    MyCircularArrayQueue(int capacity) {
-
-    }
+    MyCircularArrayQueue(int capacity) {}
 
     @Override
-    public void add(E e) {
-
-    }
+    public void add(E e) {}
 
     @Override
     public E remove() {
